@@ -15,10 +15,7 @@
                 <%- products %>
                 <%console.log("In EJS")%>
                 <%console.log(products)%>
-                <%var keys = Object.keys(products)%>
-                <console.log(keys)
-                <%products.forEach(function(product)%>
-                <%{%>
+                <%Object.keys(products).forEach(function(product){%>
                     <div class = "col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                              <img src="http://placehold.it/320x150" alt="">
@@ -48,4 +45,4 @@
     <!-- .container -->
 
 <% include partials/footer.ejs %>
- 
+

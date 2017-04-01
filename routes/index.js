@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
         var data = [1,2,3,4,5];
 
         res.render('index', {
-            products : data
+            products : products
 
         });
     })
