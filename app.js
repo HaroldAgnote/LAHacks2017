@@ -1,8 +1,11 @@
 var express = require('express')
 var app = express()
+var ejs = require('ejs')
+
+app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
-  res.send('index')
+  res.render('index')
 })
 
 app.listen(3000, function () {
