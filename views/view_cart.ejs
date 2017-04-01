@@ -24,7 +24,7 @@
                     <tbody id = "table">
                         <script>
                             products = <%- JSON.stringify(products) %>
-
+                            cart = JSON.parse(localStorage['cart']);
                             console.log(cart);
 
                             for (var key in cart)
@@ -35,7 +35,7 @@
                                 var item = products[item_id];
 
                                 var html =
-                                '<tr>' +
+                                '<tr id="'+item_id+'">' +
                                     '<td class="col-sm-8 col-md-6">' +
                                     '<div class="media">' +
                                     '    <a class="thumbnail pull-left" href="#"> <img class="media-object" src=' + item.itemImageURL +' style="width: 72px; height: 72px;"> </a>' +
@@ -50,24 +50,29 @@
                                     '<td class="item_total col-sm-1 col-md-1 text-center"><strong>'+ (cart[key]*item.itemPrice) + '</strong></td>' +
                                     '<td class="col-sm-1 col-md-1">' +
                                     '<td class="actions" data-th="">' +
-                                    '    <button id="count_refresh_'+item_id+'" class="btn btn-info btn-sm refreshButton"><span class="glyphicon glyphicon-refresh"></span></button>' +
-                                    '    <button id="remove_item" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>' +
+                                    '    <button class="count_refresh btn btn-info btn-sm"><span class="glyphicon glyphicon-refresh"></span></button>' +
+                                    '    <button class="remove_item btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>' +
                                     '</td>' +
                                 '</tr>';
                                 $("#table").append(html);
 
                             }
-                        </script>
 
-                        <script>
-                            $("#refreshButton").click(function() {
+                            $(".remove_item").click(function() {
+                                cart = removeFromCart($(this).parent().parent().attr('id'));
+                                $(this).parent().parent().remove();
+                                console.log("updated shit" + cart)
+                                localStorage.setItem('cart', cart);
+                            });
+
+                            $(".refreshButton").click(function() {
                                 var key = $(this).attr('id');
                                 var newQuantity = $("#key").value;
                                 key = key.substring(14);
                                 updateQuantity(key, newQuantity);
                             });
-                        </script>
 
+                        </script>
 
                         <tr>
                             <td>   </td>

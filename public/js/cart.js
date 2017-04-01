@@ -29,7 +29,10 @@ function addToCart(itemID)
 
 function removeFromCart(product)
 {
-    cart.remove(product);
+    // var index = cart.indexOf(product)
+    // cart.splice(index, 1);
+    console.log(cart)
+    return cart;
 }
 
 function getCart()

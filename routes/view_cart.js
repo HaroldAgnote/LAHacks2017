@@ -10,16 +10,9 @@ router.get('/', function(req, res) {
         global_products = products;
         //console.log(products)
 
-        if (req.body.part2) {
-            res.render('checkout2', {
-                products : products
-            });
-        }
-        else {
-            res.render('checkout', {
-                products : products
-            });
-        }
+        res.render('view_cart', {
+            products : products
+        }); 
     })
 
 });

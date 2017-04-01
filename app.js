@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var index = require('./routes/index');
 var getItems = require('./routes/getItems');
-var checkout = require('./routes/checkout');
+var view_cart = require('./routes/view_cart');
 var getItemPrice = require('./routes/getItemPrice');
 var processTransaction = require('./routes/processTransaction');
 
@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', index);
-app.use('/checkout', checkout)
+app.use('/view_cart', view_cart)
 app.use('/getItems', getItems);
 app.use('/getItemPrice', getItemPrice);
 app.use('/processTransaction', processTransaction);
