@@ -7,7 +7,7 @@ var firebase = require('./firebase');
 var cart = require('./public/cart')
 
 var index = require('./routes/processtransaction');
-app.use('/',index);
+app.use('/process',index);
 
 var bodyparser = require('body-parser');
 

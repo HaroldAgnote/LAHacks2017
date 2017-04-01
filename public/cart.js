@@ -1,10 +1,19 @@
 var firebase = require('../firebase');
 
-cart = [];
-
 var database = firebase.database();
 
-var products = database.ref("products");
+var cart = [];
+
+function getProducts(product)
+{
+    database.ref("/products/").once('value').then(function(snapshot, product){
+        product = snapshot.val();
+        return product;
+    });
+}
+
+var products;
+getProducts(products);
 
 console.log(products);
 
