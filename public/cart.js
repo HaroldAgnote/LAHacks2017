@@ -37,7 +37,7 @@ function getItemPrice(itemID, callBackFunc) {
     itemID=1;
     var request = new XMLHttpRequest();
     request.open('POST' , '/getItemPrice', true);
-    
+
     request.onload = function(){
         if(request.status >= 200 && request.status<400){
             callBackFunc(request.responseText);
@@ -50,7 +50,7 @@ function getItemPrice(itemID, callBackFunc) {
         console.log("Connection Fail");
     }
     request.send(itemID);
-    
+
 }
 
 
