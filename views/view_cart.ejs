@@ -61,6 +61,10 @@
                             $(".remove_item").click(function() {
                                 cart = removeFromCart($(this).parent().parent().attr('id'));
                                 $(this).parent().parent().remove();
+                                $(this).parent().parent().find('.item_total').html("$" + products[id].itemPrice*cart[id])
+                                                                getTotalPrice(cart, function(data) {
+                                                                    $("#totalPrice").html("$" + data);
+                                                                });
                                 localStorage.setItem('cart', JSON.stringify(cart));
                             });
 
