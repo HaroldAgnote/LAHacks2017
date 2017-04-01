@@ -18,4 +18,11 @@ firebase.initializeApp(config);
 
 console.log("Firebase Initialized!")
 
-module.exports=firebase;
+
+
+module.exports.getData = function(callback) {
+    firebase.database().ref("/products/").once('value').then(function(snapshot, product){
+    product = snapshot.val();
+    //console.log(product)
+    callback(product)
+})};

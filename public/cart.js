@@ -1,7 +1,3 @@
-var firebase = require('../firebase');
-
-var database = firebase.database();
-
 var cart = [];
 
 function addToCart(product)
