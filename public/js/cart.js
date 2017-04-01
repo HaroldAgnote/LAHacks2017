@@ -1,8 +1,8 @@
 var cart = [];
 
-function addToCart(product)
+function addToCart(itemID)
 {
-    cart.push(product);
+
 }
 
 function removeFromCart(product)
@@ -59,7 +59,8 @@ function getItems(callback) {
     // });
 }
 
-$("addToCart").click(function(){
-   var id = $(this).attr('id');
-    console.log(id);
+
+$(".addToCart").click(function (){
+    var id = $(this).attr('id');
+
 });
