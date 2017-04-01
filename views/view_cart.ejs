@@ -25,11 +25,11 @@
                         <script>
                             products = <%- JSON.stringify(products) %>
 
-                            console.log(cart);
+                            //console.log(cart);
 
                             for (var key in cart)
                             {
-                                console.log(key)
+                                //console.log(key)
                                 var item_id = key;
 
                                 var item = products[item_id];
@@ -58,24 +58,26 @@
 
                             }
 
+                            $("#removeAll").click(function() {
+
+                            });
+
                             $(".remove_item").click(function() {
-                                cart = removeFromCart($(this).parent().parent().attr('id'));
+                                removeFromCart($(this).parent().parent().attr('id'));
                                 $(this).parent().parent().remove();
-                                $(this).parent().parent().find('.item_total').html("$" + products[id].itemPrice*cart[id])
-                                                                getTotalPrice(cart, function(data) {
-                                                                    $("#totalPrice").html("$" + data);
-                                                                });
-                                localStorage.setItem('cart', JSON.stringify(cart));
+                                getTotalPrice(cart, function(data) {
+                                    $("#totalPrice").html("$" + data);
+                                });
                             });
 
                             $(".refreshButton").click(function() {
                                 var key = $(this).attr('id');
-                                console.log(key);
+                                //console.log(key);
                                 id = key.substring(14);
                                 var quantityKey = "quantity" + id;
                                 var newQuantity = document.getElementById(quantityKey).value;
-                                console.log(id);
-                                console.log(newQuantity);
+                                //console.log(id);
+                                //console.log(newQuantity);
                                 updateQuantity(id, newQuantity);
                                 $(this).parent().parent().find('.item_total').html("$" + products[id].itemPrice*cart[id])
                                 getTotalPrice(cart, function(data) {
@@ -91,17 +93,19 @@
                             <td>   </td>
                             <td><h3>Total</h3></td>
                             <td class="text-right"><h3><strong class = "price" id = "totalPrice">$</strong><script>getTotalPrice(cart, function(data) {
-                                console.log(data);
+                                //console.log(data);
                                 $(".price").append(data);
                             });</script></h3></td>
                         </tr>
                         <tr>
                             <td>   </td>
                             <td>   </td>
-                            <td>   </td>
                             <td>
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                            <button type="button" class="btn btn-danger" id = "removeAll">Remove All Items from Cart</button>
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-default"><a href = "/">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping
                             </button></td>
                             <td>
                             <button id="checkout" type="button" class="btn btn-success">

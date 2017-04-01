@@ -30,7 +30,7 @@ function addToCart(itemID)
 function removeFromCart(product)
 {
     delete cart[product]
-    return cart;
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 function getCart()
@@ -107,12 +107,16 @@ function getItems(callback) {
 function updateQuantity(key, newQuantity)
 {
     cart[key] = parseInt(newQuantity);
-    console.log(cart);
+    //console.log(cart);
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 $(".addToCart").click(function (){
     var id = $(this).attr('id');
     //console.log(id);
+    $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
+    });
     addToCart(id);
 });
+

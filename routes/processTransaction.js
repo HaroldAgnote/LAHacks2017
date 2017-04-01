@@ -7,15 +7,15 @@ router.post('/',function(req,res) {
 
     var transaction = {};
     var cart = JSON.parse(req.body.cart);
-    console.log(cart);
+    //console.log(cart);
     var finalPrice = 0, numItems = 0;
     database.getData(function(products) {
         for (var key in cart)
         {
             var base = products[key].itemPrice;
-            console.log(base)
+            //console.log(base)
             var multiplier = cart[key];
-            console.log(multiplier);
+            //console.log(multiplier);
             finalPrice += base*multiplier;
             numItems++;
         }
