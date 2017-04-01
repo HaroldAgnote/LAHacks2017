@@ -15,13 +15,19 @@ router.get('/', function(req, res) {
     var global_products = ''
 
     getData(function(products){
-        global_products = products
+        global_products = products;
+        console.log("In JS")
+        console.log(global_products)
+        console.log(Object.keys(global_products))
+
+        var data = [1,2,3,4,5];
+
+        res.render('index', {
+            products : data
+
+        });
     })
 
-    console.log(global_products)
-    res.render('index', {
-        products : global_products
-    });
 });
 
 module.exports = router;
