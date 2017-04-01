@@ -4,7 +4,6 @@ var database = firebase.database();
 
 var cart = [];
 
-
 function addToCart(product)
 {
     cart.push(product);
@@ -21,9 +20,11 @@ function getCart()
 }
 
 function getItemPrice(itemID, callBackFunc) {
-    itemID=1;
     var request = new XMLHttpRequest();
+
     request.open('POST' , '/getItemPrice', true);
+
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     request.onload = function(){
         if(request.status >= 200 && request.status<400){
@@ -36,7 +37,7 @@ function getItemPrice(itemID, callBackFunc) {
     request.onerror = function(){
         console.log("Connection Fail");
     }
-    request.send(itemID);
+    request.send('itemID=' + itemID);
 
 }
 
