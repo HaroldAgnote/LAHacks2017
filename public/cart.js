@@ -39,23 +39,23 @@ function getItemPrice(itemID) {
     // return result
 }
 
-function getItems() {
+function getItems(itemID, callback) {
     var request = new XMLHttpRequest();
 
     request.open('POST', '/getItems', true);
 
-    var data;
     request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
-            data = request.responseText;
+            callback(request.responseText);
         }
         else {
             console.log('There were problems getting the items from the server!');
         }
     };
-
     request.send();
-    console.log(data);
 
-    return data;
+    // How to use:
+    // getItems(1, function(data) {
+	//     // Use variable 'data' here
+    // });
 }
