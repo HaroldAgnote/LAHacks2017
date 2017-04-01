@@ -52,3 +52,8 @@ body {
 footer {
     margin: 50px 0;
 }
+
+/*SHOPZ Custom CSS Here*/
+#carousel{
+    margin-bottom: 50px;
+}
