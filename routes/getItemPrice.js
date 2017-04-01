@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+router.get('/', function(req, res) {
+    res.send('Nothing to see here');
+});
+
 router.post('/', function(req, res) {
     var itemID = req.body.itemID;
     console.log(req.body);
