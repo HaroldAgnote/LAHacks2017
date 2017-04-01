@@ -39,7 +39,7 @@ function getItemPrice(itemID) {
     // return result
 }
 
-function getItems(itemID, callback) {
+function getItems(callback) {
     var request = new XMLHttpRequest();
 
     request.open('POST', '/getItems', true);
@@ -55,7 +55,7 @@ function getItems(itemID, callback) {
     request.send();
 
     // How to use:
-    // getItems(1, function(data) {
+    // getItems(function(data) {
 	//     // Use variable 'data' here
     // });
 }
