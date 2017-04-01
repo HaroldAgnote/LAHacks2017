@@ -2,6 +2,10 @@ var express = require('express');
 var app = express();
 var ejs = require('ejs');
 
+var firebase = require('./firebase');
+
+var cart = require('./public/cart')
+
 var index = require('./routes/processtransaction');
 app.use('/',index);
 
