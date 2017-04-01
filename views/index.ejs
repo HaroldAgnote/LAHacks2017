@@ -12,21 +12,22 @@
 
                 <div class = "product_row">
 
-                <%- products %>
-                <%console.log("In EJS")%>
-                <%console.log(products)%>
                 <%Object.keys(products).forEach(function(product){%>
+                    <%console.log(product)%>
+
+                    <%console.log(products[product].itemPrice)%>
+
                     <div class = "col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                              <img src="http://placehold.it/320x150" alt="">
                              <div class="caption">
-                                 <h4 class="pull-right">$24.99</h4>
-                                 <h4><a href="#">First Product</a>
+                                 <h4 class="pull-right">$<%-products[product].itemPrice%></h4>
+                                 <h4><a href="#"><%-products[product].itemName%></a>
                                  </h4>
                                  <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
                              </div>
                              <div class="ratings">
-                                 <button type="button" class="pull-right btn btn-default">Add to Cart </button>
+                                 <button type="button"class="pull-right btn btn-default" id = <%-product%>>Add to Cart </button>
                                  <p>
                                      <span class="glyphicon glyphicon-star"></span>
                                      <span class="glyphicon glyphicon-star"></span>
