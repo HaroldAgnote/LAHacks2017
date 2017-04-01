@@ -61,8 +61,7 @@
                             $(".remove_item").click(function() {
                                 cart = removeFromCart($(this).parent().parent().attr('id'));
                                 $(this).parent().parent().remove();
-                                console.log("updated shit" + cart)
-                                localStorage.setItem('cart', cart);
+                                localStorage.setItem('cart', JSON.stringify(cart));
                             });
 
                             $(".refreshButton").click(function() {

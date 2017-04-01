@@ -29,9 +29,7 @@ function addToCart(itemID)
 
 function removeFromCart(product)
 {
-    // var index = cart.indexOf(product)
-    // cart.splice(index, 1);
-    console.log(cart)
+    delete cart[product]
     return cart;
 }
 
