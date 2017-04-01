@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 
     database.getData(function(products){
         global_products = products;
-        console.log(products)
+        //console.log(products)
 
         if (req.body.part2) {
             res.render('checkout2', {

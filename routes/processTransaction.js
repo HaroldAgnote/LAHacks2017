@@ -6,15 +6,19 @@ var database = require('../firebase');
 router.post('/',function(req,res) {
 
     var transaction = {};
-    var cart = req.body.cart.split(',');
-    cart = cleanArray(cart);
+    var cart = JSON.parse(req.body.cart);
+    console.log(cart);
     var finalPrice = 0, numItems = 0;
     database.getData(function(products) {
-        for(var i = 0; i < cart.length; i++) {
-            finalPrice += products[parseInt(cart[i])].itemPrice;
-            numItems++; /* Number of Unique Items in the shopping cart */
+        for (var key in cart)
+        {
+            var base = products[key].itemPrice;
+            console.log(base)
+            var multiplier = cart[key];
+            console.log(multiplier);
+            finalPrice += base*multiplier;
+            numItems++;
         }
-
     transaction.finalPrice = finalPrice;
     transaction.numItems = numItems;
     res.send((transaction.finalPrice).toString());

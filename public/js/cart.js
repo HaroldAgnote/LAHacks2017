@@ -1,24 +1,30 @@
-var cart = [];
+var cart = {};
 
 if (localStorage.getItem("cart") == null)
 {
-    localStorage.setItem("cart", cart);
+    localStorage.setItem("cart", JSON.stringify(cart));
     console.log("Cart Empty");
 }
 else
 {
-    cart = localStorage["cart"].replace(/,/g , " ").trim().split(" ");
-    cart = cleanArray(cart);
+    cart = JSON.parse(localStorage["cart"]);
 }
-console.log(typeof cart);
-console.log(cart);
+//console.log(typeof cart);
+//console.log(cart);
 
 function addToCart(itemID)
 {
-    cart.push(itemID+" ");
-    cart = cleanArray(cart);
-    localStorage.setItem("cart", cart);
-    console.log(cart);
+    if (itemID in cart)
+    {
+        cart[itemID] = cart[itemID] + 1;
+    }
+    else
+    {
+        cart[itemID] = 1;
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    //console.log(cart);
 }
 
 function removeFromCart(product)
@@ -50,7 +56,7 @@ function getTotalPrice(cart, callBackFunc) {
             console.log('Something wrong with connection');
         }
     }
-    request.send('cart=' + cart);
+    request.send('cart=' + JSON.stringify(cart));
 }
 
 function getItemPrice(itemID, callBackFunc) {
@@ -97,33 +103,14 @@ function getItems(callback) {
     // });
 }
 
-function cleanArray(array)
+function updateQuantity(key, newQuantity)
 {
-    var newArray = []
-
-    for (var i = 0; i < array.length; i++)
-    {
-        if (array[i].length != 0)
-        {
-            newArray.push(array[i])
-        }
-    }
-    return newArray;
+    cart[key] = newQuantity;
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 $(".addToCart").click(function (){
     var id = $(this).attr('id');
-    console.log(id);
+    //console.log(id);
     addToCart(id);
 });
-
-$("#checkout").click(function () {
-    sessionStorage.setItem("cart", cart);
-});
-
-function getItem(itemID, callback)
-{
-    getItems(function(data){
-        callback(data[itemID])
-    });
-}

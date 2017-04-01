@@ -24,12 +24,14 @@
                     <tbody id = "table">
                         <script>
                             products = <%- JSON.stringify(products) %>
-                            cart = getCart();
+
                             console.log(cart);
 
-                            for (var i = 0; i < cart.length;i++)
+                            for (var key in cart)
                             {
-                                var item_id = cart[i];
+                                console.log(key)
+                                var item_id = key;
+
                                 var item = products[item_id];
 
                                 var html =
@@ -42,19 +44,28 @@
                                     '    </div>' +
                                     '</div></td>' +
                                     '<td class="col-sm-1 col-md-1" style="text-align: center">' +
-                                    '<input type="number" min = "1" class="form-control" id="quantity'+item_id +'" value="1">' +
+                                    '<input type="number" min = "1" class="form-control" id="quantity'+item_id +'" value="'+cart[key]+'">' +
                                     '</td>' +
                                     '<td class="item_price col-sm-1 col-md-1 text-center"><strong>$' +item.itemPrice+ '</strong></td>' +
-                                    '<td class="item_total col-sm-1 col-md-1 text-center"><strong>'+ ($("#quantity"+item_id).value)*(item.itemPrice) + '</strong></td>' +
+                                    '<td class="item_total col-sm-1 col-md-1 text-center"><strong>'+ (cart[key]*item.itemPrice) + '</strong></td>' +
                                     '<td class="col-sm-1 col-md-1">' +
                                     '<td class="actions" data-th="">' +
-                                    '    <button id="count_refresh" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-refresh"></span></button>' +
+                                    '    <button id="count_refresh_'+item_id+'" class="btn btn-info btn-sm refreshButton"><span class="glyphicon glyphicon-refresh"></span></button>' +
                                     '    <button id="remove_item" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>' +
                                     '</td>' +
                                 '</tr>';
                                 $("#table").append(html);
 
                             }
+                        </script>
+
+                        <script>
+                            $("#refreshButton").click(function() {
+                                var key = $(this).attr('id');
+                                var newQuantity = $("#key").value;
+                                key = key.substring(14);
+                                updateQuantity(key, newQuantity);
+                            });
                         </script>
 
 
