@@ -29,6 +29,28 @@ function getCart()
     return cart;
 }
 
+function getTotalPrice(cart, callBackFunc) {
+
+    var request = new XMLHttpRequest();
+
+    request.open('POST', '/processTransaction', true);
+
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    request.onload = function() {
+        if(request.status >= 200 && request.status < 400) {
+            callBackFunc(request.responseText);
+        }
+        else {
+            console.log('Failed to load');
+        }
+        request.onerror = function() {
+            console.log('Something wrong with connection');
+        }
+    }
+    request.send('cart=' + cart);
+}
+
 function getItemPrice(itemID, callBackFunc) {
     var request = new XMLHttpRequest();
 
