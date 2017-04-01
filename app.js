@@ -1,5 +1,5 @@
 
-var app = express()
+var app = require('express');
 var ejs = require('ejs')
 var bodyparser = require('body-parser');
 
