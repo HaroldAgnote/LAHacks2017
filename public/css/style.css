@@ -66,3 +66,10 @@ footer {
     height: 400px;
 }
 
+td.col-sm-8.col-md-6{
+    padding: 20px;
+}
+
+.media-heading{
+    margin-left:20px;
+}

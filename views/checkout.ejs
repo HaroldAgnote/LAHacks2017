@@ -6,37 +6,78 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Total</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%Object.keys(products).forEach(function(product){%>
+                        <tr>
+                            <td class="col-sm-8 col-md-6">
+                            <div class="media">
+                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="<%-products[product].itemImageURL%>" style="width: 72px; height: 72px;"> </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><a href="#"><%-products[product].itemName%></a></h4>
+                                </div>
+                            </div></td>
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                            <input type="email" class="form-control" id="exampleInputEmail1" value="3">
+                            </td>
+                            <td class="item_price col-sm-1 col-md-1 text-center"><strong>$<%-products[product].itemPrice%></strong></td>
+                            <td class="item_total col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+                            <td class="col-sm-1 col-md-1">
+                            <td class="actions" data-th="">
+                                <button id="count_refresh" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                                <button id="remove_item" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>                                
+                            </td>
+                        </tr>
+                        <%})%>
 
-            <div class = "product_row">
-
-            <%Object.keys(products).forEach(function(product){%>
-
-                <div class = "col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <img src="<%-products[product].itemImageURL%>" alt="">
-                    <div class="caption">
-                    <h4 class="pull-right">$<%-products[product].itemPrice%></h4>
-                    <h4><a href="#"><%-products[product].itemName%></a>
-                    </h4>
-                    <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                </div>
-        <div class="ratings">
-            <button type="button"class="addToCart pull-right btn btn-default" id = <%-product%>>Add to Cart </button>
-        <p>
-        <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            </p>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>Subtotal</h5></td>
+                            <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>Estimated shipping</h5></td>
+                            <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h3>Total</h3></td>
+                            <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                            </button></td>
+                            <td>
+                            <button type="button" class="btn btn-success">
+                                Checkout <span class="glyphicon glyphicon-play"></span>
+                            </button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            </div>
-            </div>
-
-            <%})%>
-    </div>
-    </div>
+        </div>
     </div>
     <!-- .container -->
 
