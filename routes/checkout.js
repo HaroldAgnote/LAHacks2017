@@ -8,10 +8,10 @@ router.get('/', function(req, res) {
 
     database.getData(function(products){
         global_products = products;
+        console.log(products)
 
         res.render('checkout', {
             products : products
-
         });
     })
 

@@ -8,13 +8,15 @@ if (localStorage.getItem("cart") == null)
 else
 {
     cart = localStorage["cart"].replace(/,/g , " ").trim().split(" ");
+    cart = cleanArray(cart);
 }
 console.log(typeof cart);
 console.log(cart);
 
 function addToCart(itemID)
 {
-    cart.push(itemID+",");
+    cart.push(itemID+" ");
+    cart = cleanArray(cart);
     localStorage.setItem("cart", cart);
     console.log(cart);
 }
@@ -95,9 +97,33 @@ function getItems(callback) {
     // });
 }
 
+function cleanArray(array)
+{
+    var newArray = []
+
+    for (var i = 0; i < array.length; i++)
+    {
+        if (array[i].length != 0)
+        {
+            newArray.push(array[i])
+        }
+    }
+    return newArray;
+}
 
 $(".addToCart").click(function (){
     var id = $(this).attr('id');
     console.log(id);
     addToCart(id);
 });
+
+$("#checkout").click(function () {
+    sessionStorage.setItem("cart", cart);
+});
+
+function getItem(itemID, callback)
+{
+    getItems(function(data){
+        callback(data[itemID])
+    });
+}
