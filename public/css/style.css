@@ -88,12 +88,13 @@ td.col-sm-8.col-md-6{
     z-index: 105;
 }
 
-nav
+nav, #logo
 {
+    font-size: 125%;
     font-family:  'Unica One', cursive;
 }
 
 #navStuff
 {
-    margin-left: 300px;
+    margin-left: 360px;
 }
