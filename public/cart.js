@@ -58,3 +58,8 @@ function getItems(callback) {
 	//     // Use variable 'data' here
     // });
 }
+
+$("addToCart").click(function(){
+   var id = $(this).attr('id');
+    console.log(id);
+});

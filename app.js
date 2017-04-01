@@ -7,8 +7,6 @@ var app = express();
 
 var firebase = require('./firebase');
 
-var cart = require('./public/cart')
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 var index = require('./routes/index');
