@@ -1,8 +1,22 @@
 var cart = [];
 
+if (localStorage.getItem("cart") == null)
+{
+    localStorage.setItem("cart", cart);
+    console.log("Cart Empty");
+}
+else
+{
+    cart = localStorage["cart"].replace(/,/g , " ").trim().split(" ");
+}
+console.log(typeof cart);
+console.log(cart);
+
 function addToCart(itemID)
 {
-
+    cart.push(itemID+",");
+    localStorage.setItem("cart", cart);
+    console.log(cart);
 }
 
 function removeFromCart(product)
@@ -62,5 +76,6 @@ function getItems(callback) {
 
 $(".addToCart").click(function (){
     var id = $(this).attr('id');
-
+    console.log(id);
+    addToCart(id);
 });
