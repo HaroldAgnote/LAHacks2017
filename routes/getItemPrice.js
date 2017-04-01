@@ -8,7 +8,9 @@ router.post('/', function(req, res) {
         1 : ['food', 13.25],
         2 : ['food2', 13.22]
     };
-    res.send(items[itemID][1]); // items.get(itemID)[1]
+    res.write(JSON.stringify(items[itemID][1]));
+    res.end();
+    //res.sendStatus(items[itemID][1]); // items.get(itemID)[1]
 });
 
 module.exports = router;
