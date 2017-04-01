@@ -58,10 +58,6 @@
 
                             }
 
-                            $("#removeAll").click(function() {
-
-                            });
-
                             $(".remove_item").click(function() {
                                 removeFromCart($(this).parent().parent().attr('id'));
                                 $(this).parent().parent().remove();
@@ -118,6 +114,18 @@
         </div>
     </div>
     <!-- .container -->
+
+    <script>
+        $("#removeAll").click(function() {
+        for (var key in cart) {
+            removeFromCart(key)
+            $("#"+key).remove();
+            }
+        getTotalPrice(cart, function(data) {
+            $("#totalPrice").html("$" + data);
+        });
+        });
+    </script>
 
 <% include partials/footer.ejs %>
 
