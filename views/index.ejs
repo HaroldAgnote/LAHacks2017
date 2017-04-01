@@ -13,9 +13,6 @@
                 <div class = "product_row">
 
                 <%Object.keys(products).forEach(function(product){%>
-                    <%console.log(product)%>
-
-                    <%console.log(products[product].itemPrice)%>
 
                     <div class = "col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
@@ -27,7 +24,7 @@
                                  <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
                              </div>
                              <div class="ratings">
-                                 <button type="button"class="pull-right btn btn-default" id = <%-product%>>Add to Cart </button>
+                                 <button type="button"class="addToCart pull-right btn btn-default" id = <%-product%>>Add to Cart </button>
                                  <p>
                                      <span class="glyphicon glyphicon-star"></span>
                                      <span class="glyphicon glyphicon-star"></span>
