@@ -4,20 +4,6 @@ var database = firebase.database();
 
 var cart = [];
 
-var getData = function(callback){ database.ref("/products/").once('value').then(function(snapshot, product){
-    product = snapshot.val();
-    console.log(product)
-    callback(product)
-})};
-
-var global_products = ''
-getData(function(products){
-	global_products = products
-})
-
-console.log(global_products)
-
-
 function addToCart(product)
 {
     cart.push(product);
@@ -34,9 +20,11 @@ function getCart()
 }
 
 function getItemPrice(itemID, callBackFunc) {
-    itemID=1;
     var request = new XMLHttpRequest();
+
     request.open('POST' , '/getItemPrice', true);
+
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     request.onload = function(){
         if(request.status >= 200 && request.status<400){
@@ -49,7 +37,7 @@ function getItemPrice(itemID, callBackFunc) {
     request.onerror = function(){
         console.log("Connection Fail");
     }
-    request.send(itemID);
+    request.send('itemID=' + itemID);
 
 }
 
