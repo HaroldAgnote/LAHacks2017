@@ -61,3 +61,8 @@ footer {
 #product_row{
     padding:0px;
 }
+
+.carousel-inner .item, .carousel-inner . item img{
+    height: 400px;
+}
+
