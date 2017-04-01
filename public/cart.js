@@ -4,18 +4,19 @@ var database = firebase.database();
 
 var cart = [];
 
-function getProducts(product)
-{
-    database.ref("/products/").once('value').then(function(snapshot, product){
-        product = snapshot.val();
-        return product;
-    });
-}
+var getData = function(callback){ database.ref("/products/").once('value').then(function(snapshot, product){
+    product = snapshot.val();
+    console.log(product)
+    callback(product)
+})};
 
-var products;
-getProducts(products);
+var global_products = ''
+getData(function(products){
+	global_products = products
+})
 
-console.log(products);
+console.log(global_products)
+
 
 function addToCart(product)
 {
