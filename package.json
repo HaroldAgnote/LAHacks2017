@@ -1,14 +1,8 @@
 {
-  "name": "lahacks",
+  "name": "lahacks2017",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.15.2"
-  },
-  "devDependencies": {},
-  
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +15,10 @@
   "bugs": {
     "url": "https://github.com/HaroldAgnote/LAHacks2017/issues"
   },
-
-  "homepage": "https://github.com/HaroldAgnote/LAHacks2017#readme"
+  "homepage": "https://github.com/HaroldAgnote/LAHacks2017#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2"
+  }
 }
