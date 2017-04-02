@@ -19,24 +19,11 @@ router.post('/',function(req,res) {
             finalPrice += base*multiplier;
             numItems++;
         }
+        finalPrice = finalPrice.toLocaleString('en-US', {minimumFractionDigits : 2});
     transaction.finalPrice = finalPrice;
     transaction.numItems = numItems;
     res.send((transaction.finalPrice).toString());
     });
 });
-
-function cleanArray(array)
-{
-    var newArray = []
-
-    for (var i = 0; i < array.length; i++)
-    {
-        if (array[i].length != 0)
-        {
-            newArray.push(array[i])
-        }
-    }
-    return newArray;
-}
 
 module.exports = router;

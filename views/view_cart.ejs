@@ -34,33 +34,50 @@
 
                                 var item = products[item_id];
 
+                                var itemName = item.itemName;
+                                var itemImageURL = item.itemImageURL;
+                                var quantityOrdered = cart[key];
+                                var itemPrice = item.itemPrice;
+                                var itemTotal = (quantityOrdered*itemPrice);
+                                itemTotal = parseFloat(itemTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+
+                                function toFixed(value, precision) {
+                                    var precision = precision || 0,
+                                        power = Math.pow(10, precision),
+                                        absValue = Math.abs(Math.round(value * power)),
+                                        result = (value < 0 ? '-' : '') + String(Math.floor(absValue / power));
+
+                                    if (precision > 0) {
+                                        var fraction = String(absValue % power),
+                                            padding = new Array(Math.max(precision - fraction.length, 0) + 1).join('0');
+                                        result += '.' + padding + fraction;
+                                    }
+                                    return result;
+                                }
+
+
                                 var html =
                                 '<tr id="'+item_id+'">' +
                                     '<td class="col-sm-8 col-md-6">' +
                                     '<div class="media">' +
-                                    '    <a class="thumbnail pull-left" href="#"> <img class="media-object" src=' + item.itemImageURL +' style="width: 72px; height: 72px;"> </a>' +
+                                    '    <a class="thumbnail pull-left" href="#"> <img class="media-object" src=' + itemImageURL +' style="width: 72px; height: 72px;"> </a>' +
                                     '    <div class="media-body">' +
-                                    '        <h4 class="media-heading"><a href="#" >'+ item.itemName + '</a></h4>' +
+                                    '        <h4 class="media-heading"><a href="#" >'+ itemName + '</a></h4>' +
                                     '    </div>' +
                                     '</div></td>' +
                                     '<td class="col-sm-1 col-md-1" style="text-align: center">' +
-                                    '<input type="number" min = "1" class="form-control" id="quantity'+item_id +'" value="'+cart[key]+'">' +
+                                    '<input type="number" min = "1" class="form-control quantityControl" id="quantity'+item_id +'" onchange=update(id)  value="'+quantityOrdered+'">' +
                                     '</td>' +
-                                    '<td class="item_price col-sm-1 col-md-1 text-center"><strong>$' +item.itemPrice+ '</strong></td>' +
-                                    '<td class="item_total col-sm-1 col-md-1 text-center"><strong>$'+ (cart[key]*item.itemPrice) + '</strong></td>' +
+                                    '<td class="item_price col-sm-1 col-md-1 text-center"><strong>$' +itemPrice+ '</strong></td>' +
+                                    '<td class="text-center item_total" id = "total_'+item_id+'" col-sm-1 col-md-1 text-center"><strong>$'+ itemTotal + '</strong></td>' +
                                     '<td class="col-sm-1 col-md-1">' +
                                     '<td class="actions" data-th="">' +
-                                    '    <button id="count_refresh_'+item_id+'" class="btn btn-info btn-sm refreshButton"><span class="glyphicon glyphicon-refresh"></span></button>' +
                                     '    <button class="remove_item btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>' +
                                     '</td>' +
                                 '</tr>';
                                 $("#table").append(html);
 
                             }
-
-                            $("#removeAll").click(function() {
-
-                            });
 
                             $(".remove_item").click(function() {
                                 removeFromCart($(this).parent().parent().attr('id'));
@@ -70,20 +87,22 @@
                                 });
                             });
 
-                            $(".refreshButton").click(function() {
-                                var key = $(this).attr('id');
-                                //console.log(key);
-                                id = key.substring(14);
-                                var quantityKey = "quantity" + id;
-                                var newQuantity = document.getElementById(quantityKey).value;
-                                //console.log(id);
-                                //console.log(newQuantity);
+                            function update(inputID)
+                            {
+                                console.log(inputID);
+                                var id = inputID.substring(8);
+                                console.log(id);
+                                var newQuantity = document.getElementById(inputID).value;
+                                console.log(newQuantity);
                                 updateQuantity(id, newQuantity);
-                                $(this).parent().parent().find('.item_total').html("$" + products[id].itemPrice*cart[id])
+                                var newPrice = cart[id]*products[id].itemPrice;
+                                newPrice = newPrice.toLocaleString('en-US', {minimumFractionDigits: 2});
+                                console.log(newPrice);
+                                $("#total_" + id).html("$" + newPrice);
                                 getTotalPrice(cart, function(data) {
                                     $("#totalPrice").html("$" + data);
                                 });
-                            });
+                            }
                         </script>
 
 
@@ -118,6 +137,18 @@
         </div>
     </div>
     <!-- .container -->
+
+    <script>
+        $("#removeAll").click(function() {
+        for (var key in cart) {
+            removeFromCart(key)
+            $("#"+key).remove();
+            }
+        getTotalPrice(cart, function(data) {
+            $("#totalPrice").html("$" + data);
+        });
+        });
+    </script>
 
 <% include partials/footer.ejs %>
 

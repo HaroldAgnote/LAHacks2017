@@ -110,7 +110,7 @@ function getItems(callback) {
 function updateQuantity(key, newQuantity)
 {
     cart[key] = parseInt(newQuantity);
-    //console.log(cart);
+    console.log(cart);
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 

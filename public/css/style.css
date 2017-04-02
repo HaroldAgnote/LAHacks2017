@@ -73,3 +73,28 @@ td.col-sm-8.col-md-6{
 .media-heading{
     margin-left:20px;
 }
+
+#success-alert
+{
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+
+    bottom: 0; /* now it covers the whole browser window because all absolute
+                  positioning properties are set to 0. Tweak to your liking
+                  using px or percentage */
+
+    z-index: 105;
+}
+
+nav, #logo
+{
+    font-size: 125%;
+    font-family: 'Titan One', cursive;
+}
+
+#navStuff
+{
+    margin-left: 360px;
+}
