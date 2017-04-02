@@ -14,6 +14,7 @@ var getItems = require('./routes/getItems');
 var view_cart = require('./routes/view_cart');
 var getItemPrice = require('./routes/getItemPrice');
 var processTransaction = require('./routes/processTransaction');
+var userInfo = require('./routes/userInfo')
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
@@ -23,6 +24,7 @@ app.use('/view_cart', view_cart)
 app.use('/getItems', getItems);
 app.use('/getItemPrice', getItemPrice);
 app.use('/processTransaction', processTransaction);
+app.use('/userInfo', userInfo);
 
 
 app.listen(3000, function () {

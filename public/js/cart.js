@@ -25,6 +25,9 @@ function addToCart(itemID)
 
     localStorage.setItem("cart", JSON.stringify(cart));
     //console.log(cart);
+    setTimeout(function() { 
+      alert('close'); 
+    }, 5000);
 }
 
 function removeFromCart(product)
@@ -114,9 +117,6 @@ function updateQuantity(key, newQuantity)
 $(".addToCart").click(function (){
     var id = $(this).attr('id');
     //console.log(id);
-    $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-        $("#success-alert").slideUp(500);
-    });
     addToCart(id);
 });
 
