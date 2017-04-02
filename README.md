@@ -1,15 +1,20 @@
 # LAHacks2017
 
-Project:
-LA Shopz
+## Project:
 
-Team Members:
+## LA Shopz
 
-Harold Agnote
-Ryan Ea
-Mark Spencer Tan
-Kenneth Ung
-David Van
+### Team Members:
+
+### Harold Agnote
+
+### Ryan Ea
+
+### Mark Spencer Tan
+
+### Kenneth Ung
+
+###David Van
 
 LA Shopz is a project that was started and nearly completed at UCLA during the LAHacks 2017 Hackathon (March 31st - April 2nd).
 
