@@ -1,6 +1,6 @@
 
 <% include partials/header.ejs %>
-<body>
+<body style="background:url("images/bg1.jpg");">
     <% include partials/navbar.ejs %>
     <!-- Page Content -->
 
@@ -16,28 +16,36 @@
 
                 <%include partials/carousel.ejs %>
 
-                <div class = "product_row">
+                <div class = "product_row" id="shop">
+                <div class="page-header">
+				    <h1>New Arrivals</h1>
+				    <h4 class="text-muted">Step up to the Hype</h4>      
+				</div>
 
                 <%Object.keys(products).forEach(function(product){%>
 
                     <div class = "col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                             <img src="<%-products[product].itemImageURL%>" alt="">
-                             <div class="caption">
-                                 <h4 class="pull-right">$<%-products[product].itemPrice%></h4>
-                                 <h4><a href="#"><%-products[product].itemName%></a>
-                                 </h4>
-                                 <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                        	 <div class="center-cropped">
+                             	<img src="<%-products[product].itemImageURL%>" alt=""/>
                              </div>
-                             <div class="ratings">
-                                 <button type="button"class="addToCart pull-right btn btn-default" id = <%-product%>>Add to Cart </button>
-                                 <p>
-                                     <span class="glyphicon glyphicon-star"></span>
-                                     <span class="glyphicon glyphicon-star"></span>
-                                     <span class="glyphicon glyphicon-star"></span>
-                                     <span class="glyphicon glyphicon-star"></span>
-                                     <span class="glyphicon glyphicon-star"></span>
-                                 </p>
+                             <div class="item_desc">
+	                             <div class="caption">
+	                                 <h4 class="pull-right">$<%-products[product].itemPrice%></h4>
+	                                 <h4><a href="#"><%-products[product].itemName%></a>
+	                                 </h4>
+	                                 <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+	                             </div>
+	                             <div class="ratings">
+	                                 <button type="button"class="addToCart pull-right btn btn-default" id = <%-product%>>Add to Cart </button>
+	                                 <p>
+	                                     <span class="glyphicon glyphicon-star"></span>
+	                                     <span class="glyphicon glyphicon-star"></span>
+	                                     <span class="glyphicon glyphicon-star"></span>
+	                                     <span class="glyphicon glyphicon-star"></span>
+	                                     <span class="glyphicon glyphicon-star"></span>
+	                                 </p>
+	                             </div>
                              </div>
                          </div>
                      </div>
@@ -45,8 +53,6 @@
                 <%})%>
             </div>
         </div>
-
-
 </div>
 
 <% include partials/footer.ejs %>
