@@ -16,8 +16,6 @@ console.log("Initializing Firebase")
 
 firebase.initializeApp(config);
 
-
-
 console.log("Firebase Initialized!")
 
 
