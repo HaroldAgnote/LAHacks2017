@@ -14,6 +14,7 @@
 
 #### David Van
 
+
 LA Shopz is a project that was started and nearly completed at UCLA during the LAHacks 2017 Hackathon (March 31st - April 2nd).
 
 LA Shopz is an attempt to implement a shopping website that will allow customeres who visit the site to browse a number of products in the inventory. Customers can add desired items to their cart and view the items that they wish to "purchase" in their cart.
