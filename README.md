@@ -23,3 +23,14 @@ The final part of the project, the checkout page, was nearly completed before th
 
 Key technologies used for the project include NodeJS and ExpressJS, technologies that each team member gained great practice and experience from.
 
+
+## How to Deploy:
+
+```
+git clone https://github.com/HaroldAgnote/LAHacks2017.git
+node app.js
+```
+
+ - Open a browser and go to: localhost:3000
+
+

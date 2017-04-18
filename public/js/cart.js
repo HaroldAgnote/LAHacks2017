@@ -25,9 +25,6 @@ function addToCart(itemID)
 
     localStorage.setItem("cart", JSON.stringify(cart));
     //console.log(cart);
-    setTimeout(function() { 
-      alert('close'); 
-    }, 5000);
 }
 
 function removeFromCart(product)

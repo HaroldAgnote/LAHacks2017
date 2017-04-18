@@ -41,7 +41,3 @@ console.log("Adding Item");
 writeProducts(4134, "Awesome Shoes", "Black", 13.99, "/images/shoes.jpg");
 
 console.log("Item Added");
-
-writeProducts(8733, "Awesome Sauce", "Yellow", 99.99, "/images/awesomeSauce.jpg");
-writeProducts(6849, "Barbecue Sauce", "Brown", 49.99, "/images/bbqSauce.jpg");
-writeProducts(2412, "Ryan Ea", "Yellow", 19.99, "/images/ryanEa.jpg");
