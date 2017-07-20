@@ -28,7 +28,8 @@ Key technologies used for the project include NodeJS and ExpressJS, technologies
 
 ```
 git clone https://github.com/HaroldAgnote/LAHacks2017.git
-node app.js
+npm install
+npm start
 ```
 
  - Open a browser and go to: localhost:3000
